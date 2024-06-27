@@ -28,18 +28,15 @@ public class UserDaoImp implements UserDao {
 
     @Override
     public User getUserByCarModelAndSeries(String model, Integer series) {
-        try {
-            List<User> query = sessionFactory
+            List<User> users = sessionFactory
                     .getCurrentSession()
                     .createQuery("from User u where u.car.model = ?1 and u.car.series = ?2", User.class)
                     .setParameter(1, model)
                     .setParameter(2, series)
                     .getResultList();
-
-            return query.get(0);
-        } catch (IndexOutOfBoundsException e) {
-            System.out.println("There is no such user with that car");
-        }
-        return null;
+            if (users.isEmpty()) {
+                return null;
+            }
+        return users.get(0);
     }
 }

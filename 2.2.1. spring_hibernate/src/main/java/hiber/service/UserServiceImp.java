@@ -34,7 +34,10 @@ public class UserServiceImp implements UserService {
     @Transactional(readOnly = true)
     @Override
     public User getUserByCarModelAndSeries(String model, Integer series) {
-        return userDao.getUserByCarModelAndSeries(model, series);
+        User user = userDao.getUserByCarModelAndSeries(model, series);
+        if (user == null) {
+            throw new RuntimeException("There's no such user who would own this car!");
+        }
+        return user;
     }
-
 }

@@ -23,26 +23,6 @@ public class Car {
         this.series = series;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Car car = (Car) o;
-        return Objects.equals(id, car.id) && Objects.equals(model, car.model) && Objects.equals(series, car.series);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, model, series);
-    }
-
-    @Override
-    public String toString() {
-        return "Car " +
-                "series=" + series +
-                ", model='" + model + '\'';
-    }
-
     public Long getId() {
         return id;
     }
@@ -65,5 +45,25 @@ public class Car {
 
     public void setSeries(int series) {
         this.series = series;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return Objects.equals(id, car.id) && Objects.equals(model, car.model) && Objects.equals(series, car.series);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, model, series);
+    }
+
+    @Override
+    public String toString() {
+        return "Car " +
+                "series=" + series +
+                ", model='" + model + '\'';
     }
 }

@@ -23,7 +23,7 @@ import java.util.Properties;
 @ComponentScan(value = "hiber")
 public class AppConfig {
 
-    //    @Autowired1
+    //    @Autowired
     private final Environment env;
 
     @Autowired
